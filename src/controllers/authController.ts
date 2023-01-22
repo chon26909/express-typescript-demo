@@ -28,7 +28,7 @@ export const signUp = async (req: Request, res: Response) => {
         const user = await User.create(body);
 
         const tokenData = { uid: user._id };
-        const token = jwt.sign(tokenData, process.env.JWT_SECRET!);
+        const token = jwt.sign(tokenData, process.env.JWT_SECRET!, { expiresIn: '1d' });
 
         res.status(201).json({ message: 'created', token: token });
     } catch (error) {
@@ -48,7 +48,7 @@ export const signIn = async (req: Request, res: Response) => {
 
             if (passwordValid) {
                 const tokenData = { uid: user._id };
-                const token = jwt.sign(tokenData, process.env.JWT_SECRET!);
+                const token = jwt.sign(tokenData, process.env.JWT_SECRET!, { expiresIn: '1d' });
 
                 res.status(200).json({ message: 'success', token: token });
             }
