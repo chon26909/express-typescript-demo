@@ -6,8 +6,6 @@ interface DecodedToken {
 }
 
 export const authentication = (req: Request, res: Response, next: NextFunction) => {
-    console.log('authentication');
-
     const authorization = req.headers.authorization;
 
     const token = String(authorization).split('Bearer ')[1];
