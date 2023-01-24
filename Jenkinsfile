@@ -1,8 +1,6 @@
 pipeline {
     
-    agent {
-      
-    }
+    agent any
 
     environment { 
         image = 'chon26909/test'
