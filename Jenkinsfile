@@ -31,7 +31,7 @@ pipeline {
                     //     slackImage.push()
                     //     slackImage.push('latest')
                     // }
-                    docker build -t express-typescript-demo-server .
+                    sh('docker build -t express-typescript-demo-server .')
                 }
             }
         }
@@ -40,7 +40,7 @@ pipeline {
         stage('Deploy') {
             steps{
                 echo 'Deploy'
-                docker ps
+                sh('docker ps')
             }
         }
     }
