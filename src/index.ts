@@ -26,7 +26,9 @@ const app = express();
 app.use(express.json());
 app.use(
     expressSession({
-        secret: 'secret'
+        secret: 'secret',
+        resave: true,
+        saveUninitialized: true
     })
 );
 app.use(cors());
