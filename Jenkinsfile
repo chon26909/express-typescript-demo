@@ -25,11 +25,6 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    // docker.withRegistry('', 'dockerhub') {
-                    //     def slackImage = docker.build("${env.image}:${BUILD_NUMBER}")
-                    //     slackImage.push()
-                    //     slackImage.push('latest')
-                    // }
                     sh('docker build -t express-typescript-demo-server .')
                 }
             }
