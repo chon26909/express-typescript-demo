@@ -1,29 +1,35 @@
-pipline { 
-    agent { 
-        label  "dev"
-    }
-
-    environment { 
-
-    }
-
+pipeline {
+    
+    agent any  
+ 
     stages {
-
-        stage("Init") { 
-            steps { 
-                echo "Init"
+ 
+        stage('Init'){
+            steps {
+                echo 'Init'
+                echo '******************************'
             }
         }
-
-        stage("Build") {
+ 
+        stage('Install') {
             steps {
-                echo "Build"
+                echo 'Install'
+                echo '******************************'
             }
         }
-
-        stage("Deploy") { 
+ 
+        stage('Build') {
             steps {
-                echo "Deploy"
+                echo 'Build'
+                echo '******************************'
+            }
+        }
+ 
+ 
+        stage('Deploy') {
+            steps{
+                echo 'Deploy'
+                echo '******************************'
             }
         }
     }
