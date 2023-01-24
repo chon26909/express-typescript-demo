@@ -1,27 +1,38 @@
 pipeline {
     
-    agent any  
+    agent {
+        label 'dev'
+    }
+
+    environment { 
+        image = 'chon26909/test'
+        registry = "docker.io"
+    }
  
     stages {
  
-        stage('Init'){
+        stage('Checkout SCM'){
             steps {
-                echo 'Init'
-                echo '******************************'
+               checkout scm
             }
         }
  
-        stage('Install') {
+        stage('Print ENV') {
             steps {
-                echo 'Install'
-                echo '******************************'
+                sh('ls -al')
             }
         }
  
         stage('Build') {
             steps {
-                echo 'Build'
-                echo '******************************'
+                script {
+                    // docker.withRegistry('', 'dockerhub') {
+                    //     def slackImage = docker.build("${env.image}:${BUILD_NUMBER}")
+                    //     slackImage.push()
+                    //     slackImage.push('latest')
+                    // }
+                    docker build -t express-typescript-demo-server .
+                }
             }
         }
  
@@ -29,7 +40,7 @@ pipeline {
         stage('Deploy') {
             steps{
                 echo 'Deploy'
-                echo '******************************'
+                docker ps
             }
         }
     }
