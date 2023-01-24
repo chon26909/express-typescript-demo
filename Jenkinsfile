@@ -18,6 +18,7 @@ pipeline {
         stage('Print ENV') {
             steps {
                 sh('ls -al')
+                sh('printenv')
             }
         }
  
