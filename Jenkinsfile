@@ -1,6 +1,6 @@
 pipline { 
     agent { 
-        label: "dev"
+        label  "dev"
     }
 
     environment { 
