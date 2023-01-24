@@ -34,7 +34,7 @@ app.use(
 app.use(cors());
 
 app.get('/', (req, res) => {
-    res.json({ message: 'Hello World', data: [] });
+    res.json({ message: 'Hello Worlddd', data: [] });
 });
 
 app.use('/auth', authRoutes);
