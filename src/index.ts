@@ -4,7 +4,7 @@ import expressSession from 'express-session';
 
 // env file
 import dotenv from 'dotenv';
-dotenv.config();
+dotenv.config({ path: process.env.NODE_ENV ? `.env.${process.env.NODE_ENV}` : `.env` });
 
 //connect database
 import { connectMongoDB } from './db/database';
@@ -42,4 +42,5 @@ app.use('/location', locationRoutes);
 
 app.listen(PORT, () => {
     console.log('server is running port', PORT);
+    console.log(`.env.${process.env.NODE_ENV}`);
 });

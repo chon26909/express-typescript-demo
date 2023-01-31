@@ -6,6 +6,9 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "start": "nodemon",
+        "dev": "NODE_ENV=dev node dist/index.js",
+        "uat": "NODE_ENV=uat node dist/index.js",
+        "pros": "NODE_ENV=pros node dist/index.js",
         "build": "tsc --project ./"
     },
     "keywords": [],
@@ -28,6 +31,7 @@
         "dotenv": "^16.0.3",
         "express": "^4.18.2",
         "express-session": "^1.17.3",
+        "express-validator": "^6.14.3",
         "jsonwebtoken": "^9.0.0",
         "mongoose": "^6.8.1"
     }

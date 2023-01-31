@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import User from '../models/User';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
+import { validationResult } from 'express-validator';
 
 const genrateSalt = async () => {
     return await bcrypt.genSalt();
@@ -40,7 +41,17 @@ export const signUp = async (req: Request, res: Response) => {
 export const signIn = async (req: Request, res: Response) => {
     const body = req.body;
 
+    const errors = validationResult(req);
+    console.log(errors);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+
     try {
+        const result = validationResult(req);
+
+        console.log('result: ' + result);
+
         const user = await User.findOne({ email: body.email });
 
         if (user) {
