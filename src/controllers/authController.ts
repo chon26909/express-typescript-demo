@@ -43,8 +43,21 @@ export const signIn = async (req: Request, res: Response) => {
 
     const errors = validationResult(req);
     console.log(errors);
+
+    // const data_err = {
+    //     email: 'Email is not valid',
+    //     password: 'Password must be at least 5 characters'
+    // };
+
+    const result = errors.array().reduce((state: any, current: any) => {
+        state[current.param] = current.msg;
+        return state;
+    }, {});
+
+    console.log('result => ', result);
+
     if (!errors.isEmpty()) {
-        return res.status(400).json({ errors: errors.array() });
+        return res.status(400).json({ message: errors.array()[0].msg });
     }
 
     try {
