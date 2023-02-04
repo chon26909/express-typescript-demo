@@ -9,12 +9,6 @@ pipeline {
  
     stages {
  
-        stage('Checkout SCM'){
-            steps {
-               checkout scm
-            }
-        }
- 
         stage('Print ENV') {
             steps {
                 sh('ls -al')
@@ -34,6 +28,7 @@ pipeline {
         stage('Deploy') {
             steps{
                 sh('docker ps')
+                sh('docker-compose')
             }
         }
     }
