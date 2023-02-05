@@ -27,7 +27,7 @@ pipeline {
  
         stage('Deploy') {
             steps{
-                sh('docker ps')
+                sh('docker')
                 sh('docker-compose')
             }
         }
