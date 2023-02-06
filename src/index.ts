@@ -38,7 +38,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/auth', authRoutes);
-app.use('/location', locationRoutes);
+app.use('/toilet', locationRoutes);
 
 app.listen(PORT, () => {
     console.log('server is running port', PORT);
